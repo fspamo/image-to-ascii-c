@@ -1,0 +1,5 @@
+read from image.
+get width and height.
+get the brigthness of related pixel.
+
+
