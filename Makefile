@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -O2
 LDFLAGS = -lm
 
-TARGET = a
+TARGET = ascii
 SRC = main.c
 
 all: $(TARGET)
