@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	unsigned char b;
 
 	unsigned char scale[256] = 
-	
+
 	{'$', '@', 'B', '%', '8', '&', 'W', 'M', '#', '*', 'o', 'a', 'h', 'k', 'b', 'd',
 		'p', 'q', 'w', 'm', 'Z', 'O', '0', 'Q', 'L', 'C', 'J', 'U', 'Y', 'X', 'z', 'c',
 		'v', 'u', 'n', 'x', 'r', 'j', 'f', 't', '/', '\\', '|', '(', ')', '1', '{', '}',
@@ -61,13 +61,18 @@ int main(int argc, char *argv[])
 			if (x == 0)
 				printf("\n");
 			// printf("Pixel at (%d,%d): brightness = %.2f\n", x, y, brightness);
-			printf("%c", scale[brightness]);
+			if (argv[2][0] == 'w')
+			{
+				printf("%c", scale[brightness]);
+
+			}
+			else if (argv[2][0] == 'c')
+			{
+				printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, scale[brightness]);
+
+			}
 		}
 	}
-
-	// printf("Width: %d\n", width);
-	// printf("Height: %d\n", height);
-	// printf("Channels: %d\n", channels);
 
 	stbi_image_free(img);
 
