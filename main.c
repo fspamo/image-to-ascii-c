@@ -2,6 +2,11 @@
 #include "std_image.h"
 #include <stdio.h>
 
+// int calc_resolution(int image_res, int desired_res)
+// {
+	
+// }
+
 int main(int argc, char *argv[])
 {
 	int width;
@@ -42,6 +47,7 @@ int main(int argc, char *argv[])
 	};
 	if (argc == 1)
 		return 0;
+
 	img = stbi_load(argv[1], &width, &height, &channels, 0);
 
 	if (img == NULL) {
@@ -55,7 +61,7 @@ int main(int argc, char *argv[])
 			r = img[index];
 			g = img[index + 1];
 			b = img[index + 2];
-			// unsigned char a = (channels == 4) ? img[index + 3] : 255;
+			unsigned char a = (channels == 4) ? img[index + 3] : 255;
 			brightness = 0.299f * r + 0.587f * g + 0.114f * b;
 
 			if (x == 0)
@@ -68,8 +74,7 @@ int main(int argc, char *argv[])
 			}
 			else if (argv[2][0] == 'c')
 			{
-				printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, scale[brightness]);
-
+				printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, '@');
 			}
 		}
 	}
