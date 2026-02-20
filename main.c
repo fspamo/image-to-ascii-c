@@ -10,15 +10,15 @@ int main(int argc, char *argv[])
 
 	int brightness;
 
-	unsigned char	*scale;
+	// unsigned char	*scale;
 	unsigned char	*img;
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
 
-	scale = 
-		[
-		'$', '@', 'B', '%', '8', '&', 'W', 'M', '#', '*', 'o', 'a', 'h', 'k', 'b', 'd',
+	unsigned char scale[256] = 
+	
+	{'$', '@', 'B', '%', '8', '&', 'W', 'M', '#', '*', 'o', 'a', 'h', 'k', 'b', 'd',
 		'p', 'q', 'w', 'm', 'Z', 'O', '0', 'Q', 'L', 'C', 'J', 'U', 'Y', 'X', 'z', 'c',
 		'v', 'u', 'n', 'x', 'r', 'j', 'f', 't', '/', '\\', '|', '(', ')', '1', '{', '}',
 		'[', ']', '?', '-', '_', '+', '~', '<', '>', 'i', '!', 'l', 'I', ';', ':', ',',
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '
-			];
+	};
 	if (argc == 1)
 		return 0;
 	img = stbi_load(argv[1], &width, &height, &channels, 0);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	for (int y = 0; y < height; y+=4) {
+	for (int y = 0; y < height; y+=2) {
 		for (int x = 0; x < width; x++) {
 			int index = (y * width + x) * channels;
 			r = img[index];
